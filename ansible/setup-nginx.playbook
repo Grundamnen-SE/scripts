@@ -1,0 +1,16 @@
+- hosts: test
+  remote_user: root
+  tasks:
+    - name: make sure nginx is installed
+      apt: name=nginx state=present
+    - name: stop nginx
+      service: name=nginx state=stopped enabled=yes
+    - name: copy nginx.conf
+      copy: src=../configs/nginx.conf dest=/etc/nginx/nginx.conf
+    - name: copy default
+      copy: src=../configs/default dest=/etc/nginx/sites-enabled/default
+    - name: install certbot
+      git: repo=https://github.com/certbot/certbot.git dest=/opt/certbot
+      command: /opt/certbot/certbot-auto --webroot -d pesys.joarc.se -d xn--grundmnen-z2a.se -d www.xn--grundmnen-z2a.se -d grundämnen.se -d www.grundämnen.se --webroot-path /var/www/ -n -m info.grundamnen@gmail.com --agree-tos
+    - name: start nginx
+      service: name=nginx state=started enabled=yes

@@ -1,0 +1,14 @@
+[app]
+app.xn--grundmnen-z2a.se
+
+[db]
+db.xn--grundmnen-z2a.se
+
+[pesys]
+pesys.joarc.se
+
+[test]
+139.59.181.156
+
+[test:vars]
+ansible_user=root
