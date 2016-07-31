@@ -4,17 +4,4 @@
     - name: apt-get update
       apt: update_cache=yes
     - name: install git, nginx and maybe some other tool
-      apt: name={{item}} state=installed
-      with_items:
-           - git
-           - nginx
-    - name: add nodejs repo key
-      apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
-    - name: add nodejs repo
-      apt_repository: repo='deb https://deb.nodesource.com/node_6.x xenial main' state=present
-    - name: add nodejs repo src
-      apt_repository: repo='deb-src https://deb.nodesource.com/node_6.x xenial main' state=present
-    - name: install nodejs
-      apt: name=nodejs update_cache=yes
-    - name: install pm2
-      npm: name=pm2 state=present global=yes production=yes
+      apt: name=git state=installed

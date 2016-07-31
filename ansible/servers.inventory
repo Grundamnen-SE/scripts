@@ -1,14 +1,10 @@
 [app]
-app.xn--grundmnen-z2a.se
+app1.domain.tld
 
 [db]
-db.xn--grundmnen-z2a.se
+db1.domain.tld
 
-[pesys]
-pesys.joarc.se
+[lb]
+lb1.domain.tld
 
-[test]
-139.59.181.156
-
-[test:vars]
-ansible_user=root
+## Just nu så pekar alla addresser till samma server, men i framtiden kommer dessa vara individuella servrar.
