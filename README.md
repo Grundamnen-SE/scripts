@@ -15,4 +15,7 @@ Dessa kör NodeJS appen som vi har i huvudrepot. Denna server pratar med MongoDB
 Vi kommer köra rsyslog till Joars privata servrar, samt munin och nagios. Vi kommer möjligen köra IPA när det systemet har kommit ut till Joars servrar.
 
 ## Detta Repo
-I detta repo finns Vanliga bash-skript, Ansible playbooks (samt en fix för att göra så man kan köra ansible på ubuntu 16.04), config-filer för de vanliga apparna och så självklart dokumentationen för alla dessa grejer. Dokumentationen kommer finnas i mappen "docs/" i repo, där ni kan läsa om exakt hur vi har valt att konfigurera våra servrar.
+I detta repo finns Vanliga bash-skript, Ansible playbooks (samt en fix för att göra så man kan köra ansible på ubuntu 16.04+), config-filer för de vanliga apparna och så självklart dokumentationen för alla dessa grejer. Dokumentationen kommer finnas i mappen "docs/" i detta repo, där ni kan läsa om exakt hur vi har valt att konfigurera våra servrar.
+
+### Ansible
+I mappen "ansible/" i detta repo finns alla ansible playbooks för att sätta upp diverse tjänster. Här finns även fix:en för ansible och ubuntu 16.04+. Det finns även ett inventory i den mappen som innehåller våra servrar, vilka som är aktiva och vilka som kommer komma upp. Det är vår officiella serverlista.
