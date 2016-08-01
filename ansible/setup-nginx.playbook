@@ -1,16 +1,23 @@
-- hosts: test
+- hosts: lb
   remote_user: root
   tasks:
-    - name: make sure nginx is installed
+    - name: install nginx
       apt: name=nginx state=present
     - name: stop nginx
       service: name=nginx state=stopped enabled=yes
-    - name: copy nginx.conf
+    - name: create dhparam
+      command: /usr/bin/openssl dhparam -out /etc/nginx/ssl/dhparam.pem 4096
+    - name: copy nginx.conf to /etc/nginx/nginx.conf
       copy: src=../configs/nginx.conf dest=/etc/nginx/nginx.conf
-    - name: copy default
+    - name: copy default site
       copy: src=../configs/default dest=/etc/nginx/sites-enabled/default
+    - name: copy static content to /opt/grundamnen/static/
+      git: repo=https://github.com/Grundamnen-SE/pesys dest=/tmp/grundamnen
+      copy: src=/tmp/grundamnen/static dest=/opt/grundamnen/static remote_src=true
     - name: install certbot
       git: repo=https://github.com/certbot/certbot.git dest=/opt/certbot
       command: /opt/certbot/certbot-auto --webroot -d pesys.joarc.se -d xn--grundmnen-z2a.se -d www.xn--grundmnen-z2a.se -d grundämnen.se -d www.grundämnen.se --webroot-path /var/www/ -n -m info.grundamnen@gmail.com --agree-tos
     - name: start nginx
       service: name=nginx state=started enabled=yes
+    - name: cron scripts
+      copy: src=../configs/crontab dest=/etc/cron.d/grundamnen-cron

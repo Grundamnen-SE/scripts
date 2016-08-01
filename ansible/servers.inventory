@@ -1,10 +1,8 @@
 [app]
-app1.domain.tld
+app1.pesys.xzy.se
 
 [db]
-db1.domain.tld
+db1.pesys.xzy.se
 
 [lb]
-lb1.domain.tld
-
-## Just nu så pekar alla addresser till samma server, men i framtiden kommer dessa vara individuella servrar.
+lb1.pesys.xzy.se

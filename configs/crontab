@@ -1,0 +1,2 @@
+30 2 * * 1 root /opt/certbot/certbot-auto renew
+00 3 * * 1 root /bin/systemctl restart nginx
